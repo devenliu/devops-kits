@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Nginx
+
+sudo docker run \
+--name nginx \
+--restart always \
+-p 80:80 \
+-p 443:443 \
+-d \
+nginx
+
+# MySQL
+
+sudo docker run \
+--name mysql \
+--restart always \
+-e MYSQL_ROOT_PASSWORD=<YOUR_PWD> \
+-p 3306:3306 \
+-d \
+mysql:8.0 \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_general_ci
+
+# Redis
+
+sudo docker run \
+--name redis \
+-p 6379:6379 \
+-d \
+redis
